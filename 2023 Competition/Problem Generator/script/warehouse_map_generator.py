@@ -61,10 +61,10 @@ class WarehouseMapGenerator:
         # Initialize the pillars
         for i in range(self.config["pillarWidth"]):
             for j in range(self.config["pillarWidth"]):
-                self.warehouse[i][j] = "@"
-                self.warehouse[self.max_raw-i][j] = "@"
-                self.warehouse[i][self.max_col-j] = "@"
-                self.warehouse[self.max_raw-i][self.max_col-j] = "@"
+                self.warehouse[i][j] = "T"
+                self.warehouse[self.max_raw-i][j] = "T"
+                self.warehouse[i][self.max_col-j] = "T"
+                self.warehouse[self.max_raw-i][self.max_col-j] = "T"
 
         # Initialize the station
         self.station = []
@@ -159,18 +159,19 @@ class WarehouseMapGenerator:
                     j+self.config["storageSize"][0] > end_col:
                     continue
                 for ii in range(self.config["storageSize"][1]):
-                    self.warehouse[i+ii][j-1] = "S"
-                    self.warehouse[i+ii][j+self.config["storageSize"][0]] = "S"
+                    self.warehouse[i+ii][j-1] = "e"
+                    self.warehouse[i+ii][j+self.config["storageSize"][0]] = "e"
                     for jj in range(self.config["storageSize"][0]):
                         self.warehouse[i+ii][j+jj] = "@"
                         if ii == 0:
-                            self.warehouse[i+ii-1][j+jj] = "S"
-                        elif ii == self.config["storageSize"][1]-1:
-                            self.warehouse[i+ii+1][j+jj] = "S"
+                            self.warehouse[i+ii-1][j+jj] = "e"
+                        if ii == self.config["storageSize"][1]-1:
+                            self.warehouse[i+ii+1][j+jj] = "e"
 
                 #update map actual end row and column in self
                 self.map_row_end = i+self.config["storageSize"][1]+1
                 self.map_column_end = j+self.config["storageSize"][0]
+        print("\n".join(["".join(self.warehouse[i]) for i in range(self.config["mapHeight"])]))
 
 
     def check_fillin(self,row_start,row_end,column_start,column_end):
