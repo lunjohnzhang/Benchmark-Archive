@@ -1,0 +1,14 @@
+type octile
+height 10
+width 10
+map
+TT..w.w.TT
+TT......TT
+...e.e....
+w.e@e@e...
+...e.e...w
+w.e@e@e...
+...e.e...w
+..........
+TT......TT
+TT.w.w..TT

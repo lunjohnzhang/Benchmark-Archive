@@ -1,0 +1,10 @@
+mapWidth: 10
+mapHeight: 10
+output: "sortation_10-10.map"
+stationConfig: "sortation_emitter.txt"
+stationNumber: 10
+storageSize: [1,1]  # (width, height)
+stationDistance: 1     # distance between two consequtive emitters
+corridorWidth: 1    # distance between two storage blocks
+pillarWidth: 2  # width of the pillar
+operWidth: 2  # distance between the pickup station and the sotrage area
